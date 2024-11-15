@@ -1,27 +1,33 @@
 const inizio = document.getElementById("inizio");
 const fine = document.getElementById("fine");
-const dadi = document.getElementById("dadi");
 const lancia= document.getElementById("lancia");
+const dadi = document.getElementById("dadi");
 
 let timer;
 let indice;
 
 const latiDaddo = [
     "./images/cinque.png",
-    "./images/due.jpg",
-    "./images/quattro.jpg",
-    "./images/sei.jpg",
-    "./images/tre.jpg",
-    "./images/uno.jpg",
+    "./images/due.png",
+    "./images/quattro.png",
+    "./images/sei.png",
+    "./images/tre.png",
+    "./images/uno.png",
 ];
 
 function lanciaDadi(){
-    dadi.src = latiDaddo[indice];
+    const indice = Math.floor(Math.random() * latiDaddo.length);
+    const nuovaImmagine = document.createElement("img");
+    nuovaImmagine.src = latiDaddo[indice]; 
+    nuovaImmagine.width = 250; 
+    nuovaImmagine.className = "me-2"; 
+
+    dadi.appendChild(nuovaImmagine);
 }
 
 function startLancioDaddi(){
     timer = setInterval(function() {
-        indice = (indice + 1) % latiDaddo.length;  
+        indice = Math.floor(Math.random() * latiDaddo.length); 
         lanciaDadi();
     }, 2000)
 }
@@ -30,6 +36,6 @@ function fineLancioDaddi(){
     clearInterval(timer);
 }
 
-lancia.addEventListener("click", lanciaDaddi);
+lancia.addEventListener("click", lanciaDadi);
 inizio.addEventListener("click", startLancioDaddi);
 fine.addEventListener("click", fineLancioDaddi);
