@@ -27,7 +27,6 @@ function lanciaDadi(){
 
 function startLancioDaddi(){
     timer = setInterval(function() {
-        indice = Math.floor(Math.random() * latiDaddo.length); 
         lanciaDadi();
     }, 2000)
 }
