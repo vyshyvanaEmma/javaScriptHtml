@@ -27,7 +27,7 @@ function stampaMedia(){
     }
 
     const media = somma / listaNum.length;
-    mediaElement.textContent = media; 
+    mediaElement.textContent = media.toFixed(2); ; 
 }
 
 function stampaLista(){
