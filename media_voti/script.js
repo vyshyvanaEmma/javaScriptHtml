@@ -22,22 +22,25 @@ function esegui(){
 }
 function stampaMedia(){
     let somma = 0;
-    for(let i = 0; i < listaNum.length; i++){
-        somma += listaNum[i];
-    }
+    
+    listaNum.forEach(function(voto){
+        somma += voto;
+    });
 
     const media = somma / listaNum.length;
-    mediaElement.textContent = media.toFixed(2); ; 
+    mediaElement.textContent = media.toFixed(2); 
 }
+
 
 function stampaLista(){
     lista.innerHTML = '';
 
-    for(let i = 0; i < listaNum.length; i++){
+    listaNum.forEach(function(voto){
         const elemento = document.createElement("li");
-        elemento.textContent = listaNum[i];
+        elemento.textContent = voto;
         lista.appendChild(elemento);
-    }
+    });
 }
+
 
 button.addEventListener("click", esegui);
