@@ -28,3 +28,20 @@ persone.forEach(persona => {
 
     tabella.appendChild(riga);
 });
+
+/*
+for(let i = 0; i < persone.length; i++){
+
+    const p = persone[i];
+    const riga = document.createElement("tr");  
+
+    for(let x in p){
+
+        const cella = document.createElement("td");  
+        cella.innerHTML = p[x];
+        riga.appendChild(cella); 
+
+    }
+    tabella.appendChild(riga);
+}
+*/
