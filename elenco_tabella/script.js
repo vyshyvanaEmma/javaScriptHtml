@@ -5,7 +5,7 @@ const eta = document.getElementById("eta");
 const aggiungi = document.getElementById("aggiungi");
 
 const persone = [
-    
+
 ];
 
 
@@ -29,8 +29,8 @@ function stampa(){
 
 function agg(){
     //controllo se sono inseriti nome, cognome e eta
-    if (parseInt(eta.value) < 1) {
-        alert("L'età deve essere maggiore o uguale a 1.");
+    if (!nome.value || !cognomw.value || !eta.value){
+        alert("Tutti i campi devono essere compilati");
         return;
     }
     //verifico se eta e' maggiore di 0
