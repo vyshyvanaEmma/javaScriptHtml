@@ -29,7 +29,7 @@ function stampa(){
 
 function agg(){
     //controllo se sono inseriti nome, cognome e eta
-    if (!nome.value || !cognomw.value || !eta.value){
+    if (!nome.value || !cognome.value || !eta.value){
         alert("Tutti i campi devono essere compilati");
         return;
     }
