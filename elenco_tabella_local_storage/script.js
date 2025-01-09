@@ -8,6 +8,13 @@ const persone = [
 
 ];
 
+function caricaTabella(){
+    let stringa = localStorage.getItem("persone");
+    if(stringa){
+        persone = JSON.parse(stringa);
+        stampa();
+    }
+}
 
 function stampa(){
     tabella.innerHTML = "";
@@ -44,7 +51,7 @@ function agg(){
         eta: eta.value,
     }
     persone.push(newPersona);
-    stampa();
+    localStorage.setItem("persone", JSON.stringify(persone));
     nome.value = "";
     cognome.value = "";
     eta.value = "";
@@ -53,5 +60,4 @@ function agg(){
 
 aggiungi.addEventListener("click", agg);
 
-
-stampa();
+caricaTabella();
