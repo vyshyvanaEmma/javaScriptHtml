@@ -8,7 +8,6 @@ const persone = [
 
 ];
 
-
 function stampa(){
     tabella.innerHTML = "";
     for(let i = 0; i < persone.length; i++){
