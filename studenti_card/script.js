@@ -1,3 +1,8 @@
+const nome = document.getElementById("nome");
+const voto = document.getElementById("voto");
+const eta = document.getElementById("eta");
+const aggiungi = document.getElementById("aggiungi");
+
 const studenti = [
   { nome: "Marco", voto: 28, eta: 22, sesso: 'm' },
   { nome: "Laura", voto: 18, eta: 20, sesso: 'f' },
@@ -13,6 +18,21 @@ const studenti = [
 
 const container = document.getElementById("student-container");
 const form = document.getElementById("student-form");
+
+studenti.forEach(createCard);
+
+aggiungi.addEventListener("click", addS);
+
+function addS (){
+  const nome = document.getElementById("nome").value;
+  const eta = parseInt(document.getElementById("eta").value);
+  const voto = parseInt(document.getElementById("voto").value);
+  const sesso = document.getElementById("sesso").value;
+
+  const nuovoStudente = { nome, eta, voto, sesso };
+  createCard(nuovoStudente);
+
+}
 
 function createCard(studente) {
   const card = document.createElement("div");
@@ -33,19 +53,3 @@ function createCard(studente) {
 
   container.appendChild(card);
 }
-
-studenti.forEach(createCard);
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const nome = document.getElementById("nome").value;
-  const eta = parseInt(document.getElementById("eta").value);
-  const voto = parseInt(document.getElementById("voto").value);
-  const sesso = document.getElementById("sesso").value;
-
-  const nuovoStudente = { nome, eta, voto, sesso };
-  createCard(nuovoStudente);
-
-  form.reset();
-});
