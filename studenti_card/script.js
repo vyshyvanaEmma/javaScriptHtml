@@ -29,13 +29,27 @@ function cercaVoto(studente){
 
 studenti.find(cercaVoto);
 
-const nomi = studenti.map(estraiNomi);
-
-function estraiNomi(studente){
-  return studente.nome;
-}
+const nomi = studenti.map((studente) => studente.nome);
 
 console.log(nomi);
+
+const select = document.getElementById("select");
+
+nomi.forEach(nome => {
+  const option = document.createElement('option');
+  option.innerHTML = nome;
+  select.append(option);
+})
+
+select.addEventListener('change', (event)=>{
+  console.log(event.target.value);
+})
+
+const testo = document.getElementById("testo");
+testo.addEventListener("keyup", (a)=>{
+  alert("hai premuto un testo");
+  console.log(a.target.value);
+})
 
 studenti.forEach(createCard);
 
