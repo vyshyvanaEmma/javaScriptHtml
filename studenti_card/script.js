@@ -2,6 +2,9 @@ const nome = document.getElementById("nome");
 const voto = document.getElementById("voto");
 const eta = document.getElementById("eta");
 const aggiungi = document.getElementById("aggiungi");
+const container = document.getElementById("student-container");
+const cercainput = document.querySelector("#cerca"); 
+document.getElementById("voto24").addEventListener('click', () => filterByVoto(24));
 
 const studenti = [
   { nome: "Marco", voto: 28, eta: 22, sesso: 'm' },
@@ -16,14 +19,19 @@ const studenti = [
   { nome: "Federico", voto: 19, eta: 20, sesso: 'm' }
 ];
 
-const container = document.getElementById("student-container");
 const form = document.getElementById("student-form");
 
 studenti.forEach(createCard);
 
 aggiungi.addEventListener("click", addS);
 
-function addS (){
+document.getElementById("tutti").addEventListener('click', () => filterByGender(null)); 
+document.getElementById("maschi").addEventListener('click', () => filterByGender('m')); 
+document.getElementById("femmine").addEventListener('click', () => filterByGender('f')); 
+
+cercainput.addEventListener('input', () => cercaStudenti(cercainput.value));
+
+function addS() {
   const nome = document.getElementById("nome").value;
   const eta = parseInt(document.getElementById("eta").value);
   const voto = parseInt(document.getElementById("voto").value);
@@ -31,7 +39,6 @@ function addS (){
 
   const nuovoStudente = { nome, eta, voto, sesso };
   createCard(nuovoStudente);
-
 }
 
 function createCard(studente) {
@@ -52,4 +59,31 @@ function createCard(studente) {
   `;
 
   container.appendChild(card);
+}
+
+function filterByGender(gender) {
+  container.innerHTML = '';
+
+  const filteredStudents = gender ? studenti.filter(student => student.sesso === gender) : studenti;
+  
+  filteredStudents.forEach(createCard);  
+}
+
+
+function cercaStudenti(cercaTesto) {
+  container.innerHTML = '';
+
+  const filteredStudents = studenti.filter(student => 
+    student.nome.toLowerCase().includes(cercaTesto.toLowerCase())
+  );
+  
+  filteredStudents.forEach(createCard);
+}
+
+function filterByVoto(minVoto) {
+  container.innerHTML = '';
+
+  const filteredStudents = studenti.filter(student => student.voto > minVoto);
+  
+  filteredStudents.forEach(createCard);
 }
