@@ -21,6 +21,14 @@ const studenti = [
 
 const form = document.getElementById("student-form");
 
+function cercaVoto(studente){
+  if(studente.voto == 18){
+    return console.log(studente.nome);
+  }
+}
+
+studenti.find(cercaVoto);
+
 studenti.forEach(createCard);
 
 aggiungi.addEventListener("click", addS);
