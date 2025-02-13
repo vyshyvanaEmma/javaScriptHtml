@@ -29,6 +29,14 @@ function cercaVoto(studente){
 
 studenti.find(cercaVoto);
 
+const nomi = studenti.map(estraiNomi);
+
+function estraiNomi(studente){
+  return studente.nome;
+}
+
+console.log(nomi);
+
 studenti.forEach(createCard);
 
 aggiungi.addEventListener("click", addS);
