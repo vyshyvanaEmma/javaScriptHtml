@@ -1,24 +1,24 @@
-const breedSelect = document.getElementById('breed-select');
+const razzeSelect = document.getElementById('razze-select');
 const imagesContainer = document.getElementById('dog-images-container');
 
-async function fetchBreeds() {
+async function fetchRazze() {
     try {
         const response = await fetch('https://dog.ceo/api/breeds/list/all');
         const data = await response.json();
-        const breeds = data.message;
+        const razze = data.message;
 
-        for (let breed in breeds) {
+        for (let razza in razze) {
             const option = document.createElement('option');
-            option.value = breed;
-            option.textContent = breed.charAt(0).toUpperCase() + breed.slice(1);
-            breedSelect.appendChild(option);
+            option.value = razza;
+            option.textContent = razza.charAt(0).toUpperCase() + razza.slice(1);
+            razzeSelect.appendChild(option);
         }
     } catch (error) {
         console.error('Errore ', error);
     }
 }
 
-async function fetchImagesPerBreed(breed) {
+async function fetchImgPerRazza(breed) {
     try {
         const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`);
         const data = await response.json();
@@ -53,12 +53,12 @@ async function fetchImagesPerBreed(breed) {
 }
 
 breedSelect.addEventListener('change', function() {
-    const breed = this.value; 
-    if (breed) {
-        fetchImagesPerBreed(breed); 
+    const razza = this.value; 
+    if (razza) {
+        fetchImgPerRazza(razza); 
     } else {
         imagesContainer.innerHTML = ''; 
     }
 });
 
-window.onload = fetchBreeds;
+window.onload = fetchRazze;
