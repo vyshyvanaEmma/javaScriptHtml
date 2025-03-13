@@ -52,7 +52,7 @@ async function fetchImgPerRazza(breed) {
     }
 }
 
-breedSelect.addEventListener('change', function() {
+razzeSelect.addEventListener('change', function() {
     const razza = this.value; 
     if (razza) {
         fetchImgPerRazza(razza); 
