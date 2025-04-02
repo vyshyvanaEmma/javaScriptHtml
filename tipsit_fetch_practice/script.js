@@ -100,13 +100,14 @@ function mostraListaCompleta() {
   pockemonContainer.innerHTML = ''; 
 
   listaCompleta.forEach((pokemon, index) => {
-    if (tipoSelezionato === "all" || pokemon.types.some(tipo => tipo.type.name === tipoSelezionato)) {
+    if (tipoSelezionato === "all" || pokemon.types.find(tipo => tipo.type.name === tipoSelezionato)) {
       mostraPokemon(pokemon, index + 1, pockemonContainer);
     }
   });
 }
 
 document.getElementById("tipoPokemon").addEventListener("change", mostraListaCompleta);
+
 window.onload = function () {
   stampaPokemon(); 
   caricaTipiPokemon(); 
