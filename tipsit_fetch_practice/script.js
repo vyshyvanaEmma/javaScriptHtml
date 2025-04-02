@@ -8,6 +8,7 @@ async function stampaPokemon() {
 
     const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100');
     const data = await response.json();
+    
     const listaPokemon = data.results;
     
     listaCompleta = []; 
@@ -21,6 +22,7 @@ async function stampaPokemon() {
     mostraListaCompleta(); 
 
 }
+
 
 function mostraListaCompleta() {
   pockemonContainer.innerHTML = ''; 
@@ -68,7 +70,6 @@ async function cercaPokemon() {
 
 
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`);
-  if (!response.ok) throw new Error('Pokemon non trovato');
 
   const pokemon = await response.json();
 
@@ -86,24 +87,15 @@ async function caricaTipiPokemon() {
     
   const tipoSelect = document.getElementById("tipoPokemon");
 
-  data.results.forEach(tipo => {
+  const tipo = data.results;
+
+  for(let i = 0; i < tipo.length; i++){
     const option = document.createElement("option");
-    option.value = tipo.name;
-    option.textContent = tipo.name.charAt(0).toUpperCase() + tipo.name.slice(1);
+    option.textContent = tipo[i].name;
     tipoSelect.appendChild(option);
-  });
 
-}
+  }
 
-function mostraListaCompleta() {
-  const tipoSelezionato = document.getElementById("tipoPokemon").value;
-  pockemonContainer.innerHTML = ''; 
-
-  listaCompleta.forEach((pokemon, index) => {
-    if (tipoSelezionato === "all" || pokemon.types.find(tipo => tipo.type.name === tipoSelezionato)) {
-      mostraPokemon(pokemon, index + 1, pockemonContainer);
-    }
-  });
 }
 
 document.getElementById("tipoPokemon").addEventListener("change", mostraListaCompleta);
